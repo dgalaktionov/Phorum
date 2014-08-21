@@ -1,0 +1,22 @@
+<%= form_for(@user, url: edit_user_path(@user), html: { method: :put }) do |f| %>
+  <div><%= f.label :name %><br />
+  <%= f.text_field :name, autofocus: true %></div>
+  
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "off" %></div>
+
+	<div><%= f.select :user_type, ranks.map{ |k,v| [v, k] } %></div>
+	
+  <div><%= f.submit "Update" %></div>
+  
+	<h3>Delete account</h3>
+
+	<div>
+		<%= f.check_box :delete_stuff? %> <%= f.label "Completely delete topics and posts?" %>
+		 <br />
+	</div>
+  <div><%= f.submit "Delete account" %></div>
+<% end %>

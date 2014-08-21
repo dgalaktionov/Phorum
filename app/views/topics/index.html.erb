@@ -1,0 +1,26 @@
+<h2><a href="#"><%= @category %></a></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>User</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @topics.each do |topic| %>
+      <tr>
+        <td><%= link_to topic.name, category_topic_path(:id => topic.id) %></td>
+        <td><%= topic.user %></td>
+        <td><%= link_to 'Edit', edit_category_topic_path(:id => topic.id) %></td>
+        <td><%= link_to 'Destroy', category_topic_path(:id => topic.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Topic', new_category_topic_path %>

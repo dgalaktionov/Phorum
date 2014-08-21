@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Phorum</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="header">
+<p class="notice"><%= flash.notice %></p>
+<p class="alert"><%= flash.alert %></p>
+<%= link_to "Index", root_path %>
+<%= link_to "Users", users_path %>
+<% if user_signed_in? %>
+	<span class="username">[<%= link_to current_user.name, edit_user_registration_path %>]</span>
+	<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+<% else %>
+	<%= link_to "Sign in", new_user_session_path %>
+	<%= link_to "Sign up", new_user_registration_path %>
+<% end %>
+</div>
+
+<div id="content">
+<%= yield %>
+</div>
+
+</body>
+</html>

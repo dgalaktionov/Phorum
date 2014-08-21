@@ -1,0 +1,49 @@
+<h2><%= link_to @topic.category, category_path(@topic.category) %> >> <a href="#"><%= @topic %></a></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Message</th>
+      <th>Author</th>
+	  <th>Updated</th>
+	  <% if user_signed_in? %>
+      <th colspan="2"></th>
+	  <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+	<tr>
+		<td><%= simple_format(h(@topic.message)) %></td>
+		<td><%= @topic.user %></td>
+		<td><%= @topic.updated_time %></td>
+		<% if has_power_over?(@topic) %>
+		<td><%= link_to 'Edit', edit_category_topic_path(:category_id => @category, :id => @topic) %></td>
+		<td><%= link_to 'Destroy', [@category, @topic], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<% end %>
+	</tr>
+	
+	<tr><td><h3>Replies:</h3></td><td></td><td></td><td></td></tr>
+	
+    <% @posts.each do |post| %>
+      <tr id=<%= post.id %>>
+		<td><%= simple_format(h(post.message)) %></td>
+		<td><%= post.user %></td>
+		<td><%= post.updated_time %></td>
+		<% if has_power_over?(post) %>
+        <td><%= link_to 'Edit', edit_category_topic_post_path(:category_id => post.topic.category, :topic_id => post.topic, :id => post) %></td>
+        <td><%= link_to 'Destroy', [post.topic.category, post.topic, post], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= will_paginate @posts %>
+
+<% if user_signed_in? %>
+<br>
+
+<%= render :partial => '/posts/form' %>
+<% end %>
