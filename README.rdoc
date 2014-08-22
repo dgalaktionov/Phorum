@@ -1,28 +1,25 @@
-== README
+= README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+== Brief description
+A simple phorum in rails, including basic user and permission management, categories and topics. This project is a work in progress that I started to learn Rails. For this reason I didn't follow any particular code style, usually making similar things in different ways.
+Also, I kept the CSS at a minimum and I don't plan to make this forum any "prettier". However, feel free to contribute in this or any other way :-)
 
-Things you may want to cover:
+== Versions and dependencies
+Requirements to make this work:
+* ruby 2.0.0
+* Rails 4.1.4
+* mysql2 (this gem works well with MariaDB: https://mariadb.org/ )
+* tzinfo-data (only for Windows)
+* devise
+* will_paginate 3.0
+* Some default gems:
+	* sass-rails 4.0.3
+	* uglifier 1.3.0
+	* coffe-rails 4.0.0
+	* jquery-rails
+	* turbolinks
+	* jbuilder 2.0
+	* scod 0.4.0
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+== Installation
+Coming soon!
