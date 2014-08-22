@@ -12,6 +12,7 @@ module ApplicationHelper
     user_signed_in? && (current_user.user_type == 0 || current_user.user_type == 1)
   end
   
+  # All "back" buttons should call this
   def go_back
     if request.referer != nil
       redirect_to request.referer
@@ -20,6 +21,7 @@ module ApplicationHelper
     end
   end
 
+  # Check if the current user has power over a post or topic
   def check_power_over(thing)
     unless has_power_over?(thing)
       flash[:alert] = "You don't have permission over this!"
@@ -28,6 +30,7 @@ module ApplicationHelper
     end
   end
   
+  # Check if the current user is an admin
   def check_admin
     unless has_admin_power?
       flash[:alert] = "You don't have permission to do this!"
@@ -36,6 +39,7 @@ module ApplicationHelper
     end
   end
   
+  # When a user deletes its own account, this is called to edit all its topics and posts
   def kill_user(user)
     user.posts.each do |p| 
       p.message = "Deleted message"
@@ -54,10 +58,12 @@ module ApplicationHelper
     2 => "User"}
   end
   
+  # Get the path to a post for paginate
   def get_post_path(post)
     [post.topic.category, post.topic, :page => post.topic.posts.where("id < :p", {p: post.id}).count/20 + 1, :anchor => post.id]
   end
   
+  # Get a path to the last post of a topic for paginate
   def get_last_post_path(topic)
     get_post_path(topic.posts.order(updated_at: :desc).first)
   end

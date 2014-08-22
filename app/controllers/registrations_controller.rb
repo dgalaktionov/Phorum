@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+  # If there is no admin, the next registered user becomes one
   def create
     super do |user|
       if User.where(user_type: 0).empty?
@@ -8,6 +9,9 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  # With this, the users have to confirm their passwords in order to delete their account.
+  # For some reason, I couldn't get rails to pass the same info in the edit form to the destroy method,
+  #  so I had to make this filthy branch.
   def update
     if params[:commit] == "Update"
       super
