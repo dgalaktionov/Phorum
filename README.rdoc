@@ -13,13 +13,13 @@ Requirements to make this work:
 * devise
 * will_paginate 3.0
 * Some default gems:
-	* sass-rails 4.0.3
-	* uglifier 1.3.0
-	* coffe-rails 4.0.0
-	* jquery-rails
-	* turbolinks
-	* jbuilder 2.0
-	* scod 0.4.0
+  * sass-rails 4.0.3
+  * uglifier 1.3.0
+  * coffe-rails 4.0.0
+  * jquery-rails
+  * turbolinks
+  * jbuilder 2.0
+  * scod 0.4.0
 
 == Installation
 Coming soon!
