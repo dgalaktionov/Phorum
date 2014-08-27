@@ -75,6 +75,10 @@ module ApplicationHelper
   
   # Get a path to the last edited post of a topic
   def get_last_edited_post_path(topic)
-    get_post_path(topic.posts.order(updated_at: :desc).first)
+    if topic.posts.empty?
+      [topic.category, topic]
+    else
+      get_post_path(topic.posts.order(updated_at: :desc).first)
+    end
   end
 end

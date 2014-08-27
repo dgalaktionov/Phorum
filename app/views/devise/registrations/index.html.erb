@@ -20,7 +20,7 @@
 		<% end %>
 		<td><%= user.created_at.to_time.strftime("%d-%m-%Y") %></td>
         <td><%= link_to user.topics.count, user_topics_path(user) %></td>
-		<td><%= user.posts.count %></td>
+		<td><%= link_to user.posts.count, user_posts_path(user) %></td>
       </tr>
     <% end %>
   </tbody>

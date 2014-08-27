@@ -25,6 +25,7 @@ end
   get "users/:id" => "admins#edit", as: :edit_user
   put "users/:id" => "admins#update"
   get "users/:id/topics" => "topics#index", as: :user_topics
+  get "users/:id/posts" => "posts#index", as: :user_posts
   
   root to: "categories#index"
 

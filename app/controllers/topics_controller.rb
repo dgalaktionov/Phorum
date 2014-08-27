@@ -11,7 +11,7 @@ class TopicsController < ApplicationController
   # Show all topics from a user
   def index
     @user = User.find(params[:id])
-    @topics = @user.topics.all
+    @topics = @user.topics.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /topics/1

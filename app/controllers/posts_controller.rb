@@ -6,6 +6,11 @@ class PostsController < ApplicationController
   end
   before_action :set_topic, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_category, only: [:new, :create, :edit, :update, :destroy]
+  
+  def index
+    @user = User.find(params[:id])
+    @posts = @user.posts.all.reverse_order.paginate(:page => params[:page], :per_page => 20)
+  end
 
   # GET /posts/1/edit
   def edit

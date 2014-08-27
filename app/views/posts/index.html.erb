@@ -1,23 +1,31 @@
-<h2>Listing posts</h2>
+<h2><a href="#"><%= "Posts from #{@user}" %></a></h2>
 
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Message</th>
+      <th>Topic</th>
+	  <th>Updated</th>
+	  <% if user_signed_in? %>
+      <th colspan="2"></th>
+	  <% end %>
     </tr>
   </thead>
 
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr id=<%= post.id %>>
+		<td><%= link_to simple_format(h(post.message)), get_post_path(post) %></td>
+		<td><%= link_to post.topic, [post.topic.category, post.topic] %></td>
+		<td><%= post.updated_time %></td>
+		<% if has_power_over?(post) %>
+        <td><%= link_to 'Edit', edit_category_topic_post_path(:category_id => post.topic.category, :topic_id => post.topic, :id => post) %></td>
+        <td><%= link_to 'Destroy', [post.topic.category, post.topic, post], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Post', new_post_path %>
+<%= will_paginate @posts %>

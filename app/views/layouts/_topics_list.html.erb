@@ -1,0 +1,38 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Author</th>
+	  <th>Replies</th>
+	  <th>Updated</th>
+	  <th>Last post</th>
+	  <% if user_signed_in? %>
+      <th colspan="2"></th>
+	  <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @topics.each do |topic| %>
+      <tr>
+        <td><%= link_to topic.name, category_topic_path(category_id: topic.category , id: topic.id) %></td>
+        <td><%= topic.user %></td>
+		<td><%= topic.posts.count %></td>
+		<td><%= link_to topic.updated_time, get_last_edited_post_path(topic) %></td>
+		<% last_post = get_last_post(topic) %>
+		<% if last_post == nil %>
+			<td>None</td>
+		<% else %>
+			<td><%= link_to "by #{last_post.user}", get_post_path(last_post) %></td>
+		<% end %>
+		<% if has_power_over?(topic) %>
+        <td><%= link_to 'Edit', edit_category_topic_path(category_id: topic.category , id: topic.id) %></td>
+        <td><%= link_to 'Destroy', category_topic_path(category_id: topic.category, id: topic.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= will_paginate @topics %>
