@@ -1,7 +1,6 @@
 # A controller for administration actions over users
 class AdminsController < ApplicationController
   before_action :set_user, only: [:edit, :update]
-  before_action :check_admin, except: :index
 
   # GET /admins
   # GET /admins.json

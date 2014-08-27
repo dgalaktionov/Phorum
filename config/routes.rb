@@ -8,18 +8,20 @@ Rails.application.routes.draw do
 devise_for :users, skip: :registrations
 devise_scope :user do
   resource :registration,
-    only: [:new, :create, :edit, :update],
+    only: [:index, :new, :create, :edit, :update],
     path: 'users',
     path_names: { new: 'sign_up' },
     controller: "registrations",
     as: :user_registration do
       get :cancel
     end
+    
+    get "users" => "registrations#index"
 end
   
   # get "/users/destroy", to: "registrations#destroy", as: "destroy_user"
   
-  get "users" => "admins#index"
+  #get "users" => "registrations#index"
   get "users/:id" => "admins#edit", as: :edit_user
   put "users/:id" => "admins#update"
   get "users/:id/topics" => "topics#index", as: :user_topics

@@ -1,4 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
+def index
+    @users = User.all
+end
+
   # If there is no admin, the next registered user becomes one
   def create
     super do |user|

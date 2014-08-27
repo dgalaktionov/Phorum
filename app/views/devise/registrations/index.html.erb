@@ -1,0 +1,27 @@
+<h2>Users</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+	  <th>Registered</th>
+	  <th>Topics</th>
+	  <th>Posts</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% for user in @users %>
+      <tr>
+        <% if has_admin_power? %>
+			<td><%= link_to user, edit_user_path(user) %></td>
+		<% else %>
+			<td><%= user %></td>
+		<% end %>
+		<td><%= user.created_at.to_time.strftime("%d-%m-%Y") %></td>
+        <td><%= link_to user.topics.count, user_topics_path(user) %></td>
+		<td><%= user.posts.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
