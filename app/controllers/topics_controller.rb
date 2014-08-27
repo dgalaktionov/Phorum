@@ -10,7 +10,8 @@ class TopicsController < ApplicationController
   # GET /topics.json
   # Show all topics from a user
   def index
-    @topics = Topic.where("user_id = :id", {id: params[:id]})
+    @user = User.find(params[:id])
+    @topics = @user.topics.all
   end
 
   # GET /topics/1

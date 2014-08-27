@@ -63,8 +63,18 @@ module ApplicationHelper
     [post.topic.category, post.topic, :page => post.topic.posts.where("id < :p", {p: post.id}).count/20 + 1, :anchor => post.id]
   end
   
-  # Get a path to the last post of a topic for paginate
+  # Get the last post of a topic
+  def get_last_post(topic)
+    topic.posts.last
+  end
+  
+  # Get a path to the last created post
   def get_last_post_path(topic)
+    get_post_path(get_last_post(topic))
+  end
+  
+  # Get a path to the last edited post of a topic
+  def get_last_edited_post_path(topic)
     get_post_path(topic.posts.order(updated_at: :desc).first)
   end
 end

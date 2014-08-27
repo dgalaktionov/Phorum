@@ -19,11 +19,18 @@
 	margin: 0px auto;
  }
  
- table tr td:first-child {
+ table {
 	width: 100%;
+ }
+ 
+ table tr td:first-child {
+	width: 50%;
+ }
+ 
+ table tr td {
 	text-align: left;
  }
  
- table thead tr th:first-child {
-	text-align:left;
+ table thead tr th {
+	text-align: left;
  }

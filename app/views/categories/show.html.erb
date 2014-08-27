@@ -7,6 +7,7 @@
       <th>Author</th>
 	  <th>Replies</th>
 	  <th>Updated</th>
+	  <th>Last post</th>
 	  <% if user_signed_in? %>
       <th colspan="2"></th>
 	  <% end %>
@@ -19,7 +20,9 @@
         <td><%= link_to topic.name, category_topic_path(category_id: topic.category , id: topic.id) %></td>
         <td><%= topic.user %></td>
 		<td><%= topic.posts.count %></td>
-		<td><%= link_to topic.updated_time, get_last_post_path(topic) %></td>
+		<td><%= link_to topic.updated_time, get_last_edited_post_path(topic) %></td>
+		<% last_post = get_last_post(topic) %>
+		<td> <%= link_to "by #{last_post.user}", get_post_path(last_post) %></td>
 		<% if has_power_over?(topic) %>
         <td><%= link_to 'Edit', edit_category_topic_path(category_id: topic.category , id: topic.id) %></td>
         <td><%= link_to 'Destroy', category_topic_path(category_id: topic.category, id: topic.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
