@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
   
   def to_s
-    name
+    "<a href=\"users/#{self.id}\">#{self.name}</a>".html_safe
   end
   
   def delete_stuff?
