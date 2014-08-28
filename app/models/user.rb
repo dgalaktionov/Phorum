@@ -23,12 +23,20 @@ class User < ActiveRecord::Base
   end
   
   def to_s
-    "<a href=\"users/#{self.id}\">#{self.name}</a>".html_safe
+    "<a href=\"/users/#{self.id}\">#{self.name}</a>".html_safe
   end
   
   def delete_stuff?
   end
   
   def delete_stuff=(stub)
+  end
+  
+  def created_time
+    created_at.to_time.strftime("%d-%m-%Y %H:%M:%S")
+  end
+  
+  def last_login_time
+    current_sign_in_at.to_time.strftime("%d-%m-%Y %H:%M:%S")
   end
 end

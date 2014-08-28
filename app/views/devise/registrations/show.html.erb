@@ -1,0 +1,24 @@
+<h2><a href="#"><%= "#{@user.name}'s profile" %></a></h2>
+
+<div class="horizontal-container">
+	<div class="profile">
+		<p>Name</p>
+		<p>Rank</p>
+		<p>Email</p>
+		<p>Registered</p>
+		<p>Last seen</p>
+	</div>
+
+	<div class="profile">
+		<p><%= @user.name %></p>
+		<p><%= ranks[@user.user_type] %></p>
+		<p><%= @user.email %></p>
+		<p><%= @user.created_time %></p>
+		<p><%= @user.last_login_time %></p>
+	</div>
+</div>
+
+<% if has_admin_power? %>
+<br>
+<%= link_to "Edit this user", edit_user_path(@user) %>
+<% end %>

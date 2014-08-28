@@ -3,6 +3,10 @@ def index
     @users = User.all
 end
 
+def show
+  @user = User.find(params[:id])
+end
+
   # If there is no admin, the next registered user becomes one
   def create
     super do |user|

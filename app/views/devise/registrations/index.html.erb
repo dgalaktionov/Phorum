@@ -1,9 +1,10 @@
 <h2>Users</h2>
 
-<table>
+<table id="userlist">
   <thead>
     <tr>
       <th>Name</th>
+	  <th>Email</th>
 	  <th>Registered</th>
 	  <th>Topics</th>
 	  <th>Posts</th>
@@ -13,11 +14,8 @@
   <tbody>
     <% for user in @users %>
       <tr>
-        <% if has_admin_power? %>
-			<td><%= link_to user, edit_user_path(user) %></td>
-		<% else %>
-			<td><%= user %></td>
-		<% end %>
+		<td><%= user %></td>
+		<td><%= user.email %></td>
 		<td><%= user.created_at.to_time.strftime("%d-%m-%Y") %></td>
         <td><%= link_to user.topics.count, user_topics_path(user) %></td>
 		<td><%= link_to user.posts.count, user_posts_path(user) %></td>

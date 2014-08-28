@@ -17,13 +17,11 @@ devise_scope :user do
     end
     
     get "users" => "registrations#index"
+    get "users/:id" => "registrations#show"
 end
   
-  # get "/users/destroy", to: "registrations#destroy", as: "destroy_user"
-  
-  #get "users" => "registrations#index"
-  get "users/:id" => "admins#edit", as: :edit_user
-  put "users/:id" => "admins#update"
+  get "users/:id/edit" => "admins#edit", as: :edit_user
+  put "users/:id" => "admins#update", as: :update_user
   get "users/:id/topics" => "topics#index", as: :user_topics
   get "users/:id/posts" => "posts#index", as: :user_posts
   

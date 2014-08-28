@@ -16,14 +16,18 @@
     <% @topics.each do |topic| %>
       <tr>
         <td><%= link_to topic.name, category_topic_path(category_id: topic.category , id: topic.id) %></td>
-        <td><%= topic.user %></td>
+		<td><%= topic.user %></td>
 		<td><%= topic.posts.count %></td>
 		<td><%= link_to topic.updated_time, get_last_edited_post_path(topic) %></td>
 		<% last_post = get_last_post(topic) %>
 		<% if last_post == nil %>
 			<td>None</td>
 		<% else %>
-			<td><%= link_to "by #{last_post.user}", get_post_path(last_post) %></td>
+			<% if last_post.user == nil %>
+				<td><%= link_to "by Deleted", get_post_path(last_post) %></td>
+			<% else %>
+				<td><%= link_to "by #{last_post.user.name}", get_post_path(last_post) %></td>
+			<% end %>
 		<% end %>
 		<% if has_power_over?(topic) %>
         <td><%= link_to 'Edit', edit_category_topic_path(category_id: topic.category , id: topic.id) %></td>

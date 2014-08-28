@@ -34,3 +34,21 @@
  table thead tr th {
 	text-align: left;
  }
+ 
+ .profile {
+	margin: 0px 20px 0px 0px;
+	float:left;
+	clear:none;
+	overflow:hidden;
+	display: inline;
+ }
+ 
+ #userlist tr td {
+	width: auto;
+ }
+ 
+ .horizontal-container {
+	float:left;
+	height:100%;
+	width:100%;
+ }
