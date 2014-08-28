@@ -1,6 +1,5 @@
                   Prefix Verb   URI Pattern                                                        Controller#Action
     category_topic_posts POST   /categories/:category_id/topics/:topic_id/posts(.:format)          posts#create
- new_category_topic_post GET    /categories/:category_id/topics/:topic_id/posts/new(.:format)      posts#new
 edit_category_topic_post GET    /categories/:category_id/topics/:topic_id/posts/:id/edit(.:format) posts#edit
      category_topic_post PATCH  /categories/:category_id/topics/:topic_id/posts/:id(.:format)      posts#update
                          PUT    /categories/:category_id/topics/:topic_id/posts/:id(.:format)      posts#update
@@ -29,7 +28,9 @@ cancel_user_registration GET    /users/cancel(.:format)                         
   edit_user_registration GET    /users/edit(.:format)                                              registrations#edit
                          PATCH  /users(.:format)                                                   registrations#update
                          PUT    /users(.:format)                                                   registrations#update
-                   users GET    /users(.:format)                                                   admins#index
+                   users GET    /users(.:format)                                                   registrations#index
                edit_user GET    /users/:id(.:format)                                               admins#edit
-                         PUT    /users(.:format)                                                   admins#update
+                         PUT    /users/:id(.:format)                                               admins#update
+             user_topics GET    /users/:id/topics(.:format)                                        topics#index
+              user_posts GET    /users/:id/posts(.:format)                                         posts#index
                     root GET    /                                                                  categories#index

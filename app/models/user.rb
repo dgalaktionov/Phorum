@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   has_many :topics
   has_many :posts
+  validates_presence_of :name
+  validates_uniqueness_of :name
+  validates_presence_of :email
+  validates_uniqueness_of :email
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
