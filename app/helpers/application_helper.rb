@@ -81,4 +81,14 @@ module ApplicationHelper
       get_post_path(topic.posts.order(updated_at: :desc).first)
     end
   end
+  
+  # Sanitize text
+  def phorum_sanitize(text)
+    simple_format(h(text))
+  end
+  
+  # Sanitize and transform text
+  def phorum_transform(text)
+    auto_link(phorum_sanitize(text).gsub(/(?<img>(https?:\/\/)?[-a-zA-Z0-9.]+\/[-_a-zA-Z0-9&.\/]+\.(?i)(bmp|jpg|jpeg|png|gif|tif|exf|svg|wfm))/, '<a href="\k<img>"><img alt="Phorum Image" src="\k<img>" class="phorum-image"></img></a>'))
+  end
 end

@@ -15,7 +15,7 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr id=<%= post.id %>>
-		<td><%= link_to simple_format(h(post.message)), get_post_path(post) %></td>
+		<td><%= link_to phorum_sanitize(post.message), get_post_path(post) %></td>
 		<td><%= link_to post.topic, [post.topic.category, post.topic] %></td>
 		<td><%= post.updated_time %></td>
 		<% if has_power_over?(post) %>
