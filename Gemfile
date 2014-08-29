@@ -41,5 +41,8 @@ gem 'tzinfo-data', platforms: [:x64_mingw, :mingw, :mswin]
 # Devise for auth
 gem 'devise'
 
+# Autolink
+gem 'rails_autolink'
+
 # Pagination
 gem 'will_paginate', '~> 3.0'
