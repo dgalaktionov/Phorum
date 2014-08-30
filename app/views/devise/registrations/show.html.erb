@@ -5,6 +5,8 @@
 		<p>Name</p>
 		<p>Rank</p>
 		<p>Email</p>
+		<p>Topics</p>
+		<p>Posts</p>
 		<p>Registered</p>
 		<p>Last seen</p>
 	</div>
@@ -13,6 +15,8 @@
 		<p><%= @user.name %></p>
 		<p><%= ranks[@user.user_type] %></p>
 		<p><%= @user.email %></p>
+		<p><%= link_to @user.topics.count, user_topics_path(@user) %></p>
+		<p><%= link_to @user.posts.count, user_posts_path(@user) %></p>
 		<p><%= @user.created_time %></p>
 		<p><%= @user.last_login_time %></p>
 	</div>
