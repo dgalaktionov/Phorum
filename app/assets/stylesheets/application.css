@@ -35,22 +35,20 @@
 	text-align: left;
  }
  
- .profile {
-	margin: 0px 20px 0px 0px;
-	float:left;
-	clear:none;
-	overflow:hidden;
-	display: inline;
+ .profile .label {
+	clear: both;
+	text-align: right;
+	min-width: 70px;
+	margin-right: 16px;
+ }
+ 
+ .profile .label, .profile .field {
+	float: left;
+	display: inline-block;
  }
  
  #userlist tr td {
 	width: auto;
- }
- 
- .horizontal-container {
-	float:left;
-	height:100%;
-	width:100%;
  }
  
  .phorum-image {
