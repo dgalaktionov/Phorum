@@ -14,25 +14,31 @@
  *= require_self
  */
 
+ body {
+	background-color: #222222;
+	color: #DDDDDD;
+ }
+ 
+ a {
+	color: #AAAADD;
+ }
+ 
+ a:visited {
+    color: #B0ABA0;
+}
+ 
  #header, #content {
 	width: 60%;
 	margin: 0px auto;
  }
  
- table {
+ table, table tr td:first-child, table thead tr th:first-child {
 	width: 100%;
  }
  
- table tr td:first-child {
-	width: 100%;
- }
- 
- table tr td {
+ table tr td, table thead tr th {
 	text-align: left;
- }
- 
- table thead tr th {
-	text-align: left;
+	min-width: 80px;
  }
  
  .profile .label {
@@ -47,7 +53,7 @@
 	display: inline-block;
  }
  
- #userlist tr td {
+ #userlist tr td, #userlist thead tr th {
 	width: auto;
  }
  
