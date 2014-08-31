@@ -13,9 +13,12 @@
  *= require_tree .
  *= require_self
  */
-
- body {
+ 
+ body, a, a:hover:visited, a:visited {
 	background-color: #222222;
+ }
+ 
+ body, a:hover:visited {
 	color: #DDDDDD;
  }
  
