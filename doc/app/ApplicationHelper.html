@@ -70,6 +70,10 @@
     
     <li ><a href="#method-i-check_power_over">#check_power_over</a>
     
+    <li ><a href="#method-i-get_last_edited_post_path">#get_last_edited_post_path</a>
+    
+    <li ><a href="#method-i-get_last_post">#get_last_post</a>
+    
     <li ><a href="#method-i-get_last_post_path">#get_last_post_path</a>
     
     <li ><a href="#method-i-get_post_path">#get_post_path</a>
@@ -83,6 +87,10 @@
     <li ><a href="#method-i-has_power_over-3F">#has_power_over?</a>
     
     <li ><a href="#method-i-kill_user">#kill_user</a>
+    
+    <li ><a href="#method-i-phorum_sanitize">#phorum_sanitize</a>
+    
+    <li ><a href="#method-i-phorum_transform">#phorum_transform</a>
     
     <li ><a href="#method-i-ranks">#ranks</a>
     
@@ -194,6 +202,76 @@
       </div>
 
     
+      <div id="method-i-get_last_edited_post_path" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_last_edited_post_path</span><span
+            class="method-args">(topic)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Get a path to the last edited post of a topic</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_last_edited_post_path-source">
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_last_edited_post_path</span>(<span class="ruby-identifier">topic</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">topic</span>.<span class="ruby-identifier">posts</span>.<span class="ruby-identifier">empty?</span>
+    [<span class="ruby-identifier">topic</span>.<span class="ruby-identifier">category</span>, <span class="ruby-identifier">topic</span>]
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">get_post_path</span>(<span class="ruby-identifier">topic</span>.<span class="ruby-identifier">posts</span>.<span class="ruby-identifier">order</span>(<span class="ruby-identifier">updated_at</span><span class="ruby-operator">:</span> <span class="ruby-value">:desc</span>).<span class="ruby-identifier">first</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_last_post" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_last_post</span><span
+            class="method-args">(topic)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Get the last post of a topic</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_last_post-source">
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_last_post</span>(<span class="ruby-identifier">topic</span>)
+  <span class="ruby-identifier">topic</span>.<span class="ruby-identifier">posts</span>.<span class="ruby-identifier">last</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-get_last_post_path" class="method-detail ">
         
         <div class="method-heading">
@@ -207,15 +285,15 @@
 
         <div class="method-description">
           
-          <p>Get a path to the last post of a topic for paginate</p>
+          <p>Get a path to the last created post</p>
           
           
 
           
           <div class="method-source-code" id="get_last_post_path-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 67</span>
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">get_last_post_path</span>(<span class="ruby-identifier">topic</span>)
-  <span class="ruby-identifier">get_post_path</span>(<span class="ruby-identifier">topic</span>.<span class="ruby-identifier">posts</span>.<span class="ruby-identifier">order</span>(<span class="ruby-identifier">updated_at</span><span class="ruby-operator">:</span> <span class="ruby-value">:desc</span>).<span class="ruby-identifier">first</span>)
+  <span class="ruby-identifier">get_post_path</span>(<span class="ruby-identifier">get_last_post</span>(<span class="ruby-identifier">topic</span>))
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -427,6 +505,72 @@ and posts</p>
     <span class="ruby-identifier">t</span>.<span class="ruby-identifier">save!</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">user</span>.<span class="ruby-identifier">destroy</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-phorum_sanitize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">phorum_sanitize</span><span
+            class="method-args">(text)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sanitize text</p>
+          
+          
+
+          
+          <div class="method-source-code" id="phorum_sanitize-source">
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 86</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">phorum_sanitize</span>(<span class="ruby-identifier">text</span>)
+  <span class="ruby-identifier">simple_format</span>(<span class="ruby-identifier">h</span>(<span class="ruby-identifier">text</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-phorum_transform" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">phorum_transform</span><span
+            class="method-args">(text)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sanitize and transform text</p>
+          
+          
+
+          
+          <div class="method-source-code" id="phorum_transform-source">
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 91</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">phorum_transform</span>(<span class="ruby-identifier">text</span>)
+  <span class="ruby-identifier">auto_link</span>(<span class="ruby-identifier">phorum_sanitize</span>(<span class="ruby-identifier">text</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/(?&lt;img&gt;(https?:\/\/)?[-a-zA-Z0-9.]+\/[-_a-zA-Z0-9&amp;.\/]+\.(?i)(bmp|jpg|jpeg|png|gif|tif|exf|svg|wfm))/</span>, <span class="ruby-string">&#39;&lt;a href=&quot;\k&lt;img&gt;&quot;&gt;&lt;img alt=&quot;Phorum Image&quot; src=&quot;\k&lt;img&gt;&quot; class=&quot;phorum-image&quot;&gt;&lt;/img&gt;&lt;/a&gt;&#39;</span>))
 <span class="ruby-keyword">end</span></pre>
           </div>
           

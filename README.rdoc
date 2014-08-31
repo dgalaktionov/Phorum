@@ -4,6 +4,18 @@
 A simple phorum in rails, including basic user and permission management, categories and topics. This project is a work in progress that I started to learn Rails. For this reason I didn't follow any particular code style, usually making similar things in different ways.
 Also, I kept the CSS at a minimum and I don't plan to make this forum any "prettier". However, feel free to contribute in this or any other way :-)
 
+== Main features
+A category contains many topics, a topic contains many posts. The topics and posts are shown in pages when needed. A topic itself contains a message, and it's seen on top of all pages of this topic. Under the topic's message there are the posts, ordered so that the bottom ones were published later.
+
+In Phorum, the guests can only read posts and user info, and there are three permission levels for registered users:
+* *Level* *2:* *User.* Can make new posts and topics. Also, has power over his content (can edit or remove) and his profile. If he removes his account, all his messages will be edited so they say "DELETED".
+* *Level* *1:* *Moderator.* Has power over all posts and topics.
+* *Level* *0:* *Admin.* Has power over all users, can edit their profiles with some extra fields: An admin can change the permission level of another user and he can remove them in a way that all his posts and topics are totally deleted. Also, an admin has power over the categories and can create new ones. If there is no admin account in the Phorum, the next registered user becomes automatically an admin.
+  
+A topic is considered to be updated when someone posts something new OR a post is edited, so the last updated post doesn't have to be the same as in the "Last post" link.
+  
+When someone posts a link, it's transformed into an actual clickable link. If the link happens to be an image, the image is placed into the post. I've been extra careful with these features and made many security tests.
+
 == Versions and dependencies
 Requirements to make this work:
 * ruby 2.0.0
@@ -12,6 +24,7 @@ Requirements to make this work:
 * tzinfo-data (only for Windows)
 * devise
 * will_paginate 3.0
+* rails_autolink
 * Some default gems:
   * sass-rails 4.0.3
   * uglifier 1.3.0

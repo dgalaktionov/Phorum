@@ -21,7 +21,8 @@ class User < ActiveRecord::Base
       where(conditions).first
     end
   end
-  
+
+  # The user name with a link to his profile
   def to_s
     "<a href=\"/users/#{self.id}\">".html_safe + self.name + "</a>".html_safe
   end

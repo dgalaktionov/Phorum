@@ -79,6 +79,8 @@
     
     <li ><a href="#method-i-edit">#edit</a>
     
+    <li ><a href="#method-i-index">#index</a>
+    
     <li ><a href="#method-i-update">#update</a>
     
   </ul>
@@ -134,7 +136,7 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 16</span>
+            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-ivar">@post</span> = <span class="ruby-constant">Post</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">post_params</span>)
   <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">topic</span> = <span class="ruby-ivar">@topic</span>
@@ -179,7 +181,7 @@
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 49</span>
+            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -216,8 +218,42 @@
 
           
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 11</span>
+            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@posts</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">posts</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">reverse_order</span>.<span class="ruby-identifier">paginate</span>(<span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>], <span class="ruby-value">:per_page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">20</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -248,7 +284,7 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 34</span>
+            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">post_params</span>)

@@ -75,9 +75,13 @@
     
     <li ><a href="#method-c-find_for_database_authentication">::find_for_database_authentication</a>
     
+    <li ><a href="#method-i-created_time">#created_time</a>
+    
     <li ><a href="#method-i-delete_stuff-3D">#delete_stuff=</a>
     
     <li ><a href="#method-i-delete_stuff-3F">#delete_stuff?</a>
+    
+    <li ><a href="#method-i-last_login_time">#last_login_time</a>
     
     <li ><a href="#method-i-to_s">#to_s</a>
     
@@ -134,7 +138,7 @@
 
           
           <div class="method-source-code" id="find_for_database_authentication-source">
-            <pre><span class="ruby-comment"># File app/models/user.rb, line 11</span>
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 15</span>
   <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_for_database_authentication</span>(<span class="ruby-identifier">warden_conditions</span>)
   <span class="ruby-identifier">conditions</span> = <span class="ruby-identifier">warden_conditions</span>.<span class="ruby-identifier">dup</span>
   
@@ -162,6 +166,39 @@
        </header>
 
     
+      <div id="method-i-created_time" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">created_time</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="created_time-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">created_time</span>
+  <span class="ruby-identifier">created_at</span>.<span class="ruby-identifier">to_time</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">&quot;%d-%m-%Y %H:%M:%S&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-delete_stuff-3D" class="method-detail ">
         
         <div class="method-heading">
@@ -181,7 +218,7 @@
 
           
           <div class="method-source-code" id="delete_stuff-3D-source">
-            <pre><span class="ruby-comment"># File app/models/user.rb, line 28</span>
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">delete_stuff=</span>(<span class="ruby-identifier">stub</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -213,8 +250,41 @@
 
           
           <div class="method-source-code" id="delete_stuff-3F-source">
-            <pre><span class="ruby-comment"># File app/models/user.rb, line 25</span>
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">delete_stuff?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-last_login_time" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">last_login_time</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="last_login_time-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">last_login_time</span>
+  <span class="ruby-identifier">current_sign_in_at</span>.<span class="ruby-identifier">to_time</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">&quot;%d-%m-%Y %H:%M:%S&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -239,15 +309,15 @@
 
         <div class="method-description">
           
-          
+          <p>The user name with a link to his profile</p>
           
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File app/models/user.rb, line 21</span>
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
-  <span class="ruby-identifier">name</span>
+  <span class="ruby-node">&quot;&lt;a href=\&quot;/users/#{self.id}\&quot;&gt;&quot;</span>.<span class="ruby-identifier">html_safe</span> <span class="ruby-operator">+</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;&lt;/a&gt;&quot;</span>.<span class="ruby-identifier">html_safe</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

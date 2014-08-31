@@ -75,6 +75,10 @@
     
     <li class="calls-super" ><a href="#method-i-create">#create</a>
     
+    <li ><a href="#method-i-index">#index</a>
+    
+    <li ><a href="#method-i-show">#show</a>
+    
     <li class="calls-super" ><a href="#method-i-update">#update</a>
     
   </ul>
@@ -135,7 +139,7 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/registrations_controller.rb, line 3</span>
+            <pre><span class="ruby-comment"># File app/controllers/registrations_controller.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-keyword">super</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">user_type</span><span class="ruby-operator">:</span> <span class="ruby-value">0</span>).<span class="ruby-identifier">empty?</span>
@@ -143,6 +147,72 @@
       <span class="ruby-identifier">resource_saved</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">save</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/registrations_controller.rb, line 2</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+    <span class="ruby-ivar">@users</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">all</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-show" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="show-source">
+            <pre><span class="ruby-comment"># File app/controllers/registrations_controller.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+  <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -182,7 +252,7 @@ info in the edit form to the destroy method,</p>
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/registrations_controller.rb, line 15</span>
+            <pre><span class="ruby-comment"># File app/controllers/registrations_controller.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:commit</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;Update&quot;</span>
     <span class="ruby-keyword">super</span>
