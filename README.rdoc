@@ -20,7 +20,7 @@ When someone posts a link, it's transformed into an actual clickable link. If th
 Requirements to make this work:
 * ruby 2.0.0
 * Rails 4.1.4
-* mysql2 (this gem works well with MariaDB: https://mariadb.org/ )
+* mysql2 (this gem works well with MariaDB: https://mariadb.org )
 * tzinfo-data (only for Windows)
 * devise
 * will_paginate 3.0
@@ -35,4 +35,11 @@ Requirements to make this work:
   * scod 0.4.0
 
 == Installation
-Coming soon!
+This project was developed on Windows, because any idiot could do it in Linux. There is no honor in going by the easy path. However, these instructions are for GNU/Linux systems, and were tested in Ubuntu:
+* First, ensure that you have your ruby on rails environment correctly installed, with the same or above versions as specified above. You should also have the bundler gem installed with rails, check it with <tt>bundle -v</tt>.
+* Then comes the database configuration. The phorum should work well with MySQL or MariaDB. <tt>apt-get install mariadb-server mariadb-client libmariadbd-dev libmariadbclient-dev</tt> should do the trick. Then you mess with <tt>config/database.yml</tt> file (the default configuration should work also) and create the database and user accordingly in the usual mysql syntax.
+* Run <tt>bundle install</tt>
+* Run <tt>rake db:migrate</tt>
+* Run <tt>rails s</tt>, go to http://localhost:3000. If everything went well, you should be seeing the Phorum main page, with no categories yet. Sign up and create some!
+
+The project is also Windows-ready, but it's still a real pain just to get it working. Contact me if you need support on this.
