@@ -8,11 +8,6 @@ class Topic < ActiveRecord::Base
     name
   end
   
-  # Links to last topics, etc...
-  def stats_for_index
-    
-  end
-  
   def updated_time
     updated_at.to_time.strftime("%d-%m-%Y %H:%M:%S")
   end

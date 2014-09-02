@@ -13,4 +13,12 @@ class PagesTest < ActionDispatch::PerformanceTest
   test "category" do
     get '/categories/1'
   end
+  
+  test "normal_topic" do
+    get "http://localhost:3000/categories/1/topics/12?page=1"
+  end
+  
+  test "topic_with_images" do
+    get "http://localhost:3000/categories/1/topics/12?page=2"
+  end
 end
