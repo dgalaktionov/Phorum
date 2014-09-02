@@ -60,6 +60,7 @@
   <ul class="link-list" role="directory">
     <li><a href="#label-README">README</a>
     <li><a href="#label-Brief+description">Brief description</a>
+    <li><a href="#label-Main+features">Main features</a>
     <li><a href="#label-Versions+and+dependencies">Versions and dependencies</a>
     <li><a href="#label-Installation">Installation</a>
   </ul>
@@ -93,6 +94,43 @@ usually making similar things in different ways. Also, I kept the CSS at a
 minimum and I don&#39;t plan to make this forum any “prettier”. However,
 feel free to contribute in this or any other way :-)</p>
 
+<h2 id="label-Main+features">Main features<span><a href="#label-Main+features">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p>A category contains many topics, a topic contains many posts. The topics
+and posts are shown in pages when needed. A topic itself contains a
+message, and it&#39;s seen on top of all pages of this topic. Under the
+topic&#39;s message there are the posts, ordered so that the bottom ones
+were published later.</p>
+
+<p>In Phorum, the guests can only read posts and user info, and there are
+three permission levels for registered users:</p>
+<ul><li>
+<p><strong>Level</strong> <strong>2:</strong> <strong>User.</strong> Can make
+new posts and topics. Also, has power over his content (can edit or remove)
+and his profile. If he removes his account, all his messages will be edited
+so they say “DELETED”.</p>
+</li><li>
+<p><strong>Level</strong> <strong>1:</strong> <strong>Moderator.</strong> Has
+power over all posts and topics.</p>
+</li><li>
+<p><strong>Level</strong> <strong>0:</strong> <strong>Admin.</strong> Has
+power over all users, can edit their profiles with some extra fields: An
+admin can change the permission level of another user and he can remove
+them in a way that all his posts and topics are totally deleted. Also, an
+admin has power over the categories and can create new ones. If there is no
+admin account in the Phorum, the next registered user becomes automatically
+an admin.</p>
+</li></ul>
+
+<p>A topic is considered to be updated when someone posts something new OR a
+post is edited, so the last updated post doesn&#39;t have to be the same as
+in the “Last post” link.</p>
+
+<p>When someone posts a link, it&#39;s transformed into an actual clickable
+link. If the link happens to be an image, the image is placed into the
+post. I&#39;ve been extra careful with these features and made many
+security tests.</p>
+
 <h2 id="label-Versions+and+dependencies">Versions and dependencies<span><a href="#label-Versions+and+dependencies">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p>Requirements to make this work:</p>
@@ -102,13 +140,19 @@ feel free to contribute in this or any other way :-)</p>
 <p>Rails 4.1.4</p>
 </li><li>
 <p>mysql2 (this gem works well with MariaDB: <a
-href="https://mariadb.org">mariadb.org</a>/ )</p>
+href="https://mariadb.org">mariadb.org</a> )</p>
 </li><li>
 <p>tzinfo-data (only for Windows)</p>
 </li><li>
 <p>devise</p>
 </li><li>
 <p>will_paginate 3.0</p>
+</li><li>
+<p>rails_autolink</p>
+</li><li>
+<p>rails-perftest</p>
+</li><li>
+<p>ruby-prof</p>
 </li><li>
 <p>Some default gems:</p>
 <ul><li>
@@ -130,7 +174,34 @@ href="https://mariadb.org">mariadb.org</a>/ )</p>
 
 <h2 id="label-Installation">Installation<span><a href="#label-Installation">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<p>Coming soon!</p>
+<p>This project was developed on Windows, because any idiot could do it in
+Linux. There is no honor in going by the easy path. However, these
+instructions are for GNU/Linux systems, and were tested in Ubuntu:</p>
+<ul><li>
+<p>First, ensure that you have your ruby on rails environment correctly
+installed, with the same or above versions as specified above. You should
+also have the bundler gem installed with rails, check it with <code>bundle
+-v</code>.</p>
+</li><li>
+<p>Then comes the database configuration. The phorum should work well with
+MySQL or MariaDB. <code>apt-get install mariadb-server mariadb-client
+libmariadbd-dev libmariadbclient-dev</code> should do the trick. Then you
+mess with <code>config/database.yml</code> file (the default configuration
+should work also) and create the database and user accordingly in the usual
+mysql syntax.</p>
+</li><li>
+<p>Run <code>bundle install</code></p>
+</li><li>
+<p>Run <code>rake db:migrate</code></p>
+</li><li>
+<p>Run <code>rails s</code>, go to <a
+href="http://localhost:3000">localhost:3000</a>. If everything went well,
+you should be seeing the Phorum main page, with no categories yet. Sign up
+and create some!</p>
+</li></ul>
+
+<p>The project is also Windows-ready, but it&#39;s still a real pain just to
+get it working. Contact me if you need support on this.</p>
 </main>
 
 

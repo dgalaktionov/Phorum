@@ -46,3 +46,7 @@ gem 'rails_autolink'
 
 # Pagination
 gem 'will_paginate', '~> 3.0'
+
+# Profiling
+gem 'rails-perftest'
+gem 'ruby-prof'

@@ -1,5 +1,5 @@
-Sun, 31 Aug 2014 13:21:26 +0200
-README.rdoc	Fri, 22 Aug 2014 14:27:16 +0200
+Tue, 02 Sep 2014 13:36:39 +0200
+README.rdoc	Tue, 02 Sep 2014 13:36:28 +0200
 app/controllers/admins_controller.rb	Thu, 28 Aug 2014 19:01:20 +0200
 app/controllers/application_controller.rb	Sat, 26 Jul 2014 18:05:46 +0200
 app/controllers/categories_controller.rb	Wed, 27 Aug 2014 19:03:13 +0200
@@ -14,4 +14,4 @@ app/helpers/topics_helper.rb	Thu, 24 Jul 2014 18:37:11 +0200
 app/models/category.rb	Sat, 26 Jul 2014 14:17:52 +0200
 app/models/post.rb	Sun, 27 Jul 2014 19:15:31 +0200
 app/models/topic.rb	Sun, 27 Jul 2014 19:15:12 +0200
-app/models/user.rb	Sun, 31 Aug 2014 13:17:14 +0200
+app/models/user.rb	Sun, 31 Aug 2014 13:46:38 +0200

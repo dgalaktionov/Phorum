@@ -25,6 +25,8 @@ Requirements to make this work:
 * devise
 * will_paginate 3.0
 * rails_autolink
+* rails-perftest
+* ruby-prof
 * Some default gems:
   * sass-rails 4.0.3
   * uglifier 1.3.0
