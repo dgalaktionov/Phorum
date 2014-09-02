@@ -16,23 +16,35 @@
 
   <tbody>
     <% @categories.each do |category| %>
+	<% last_topic = category[5] %>
+	<% if last_topic == nil %>
+			<% updated_time = 0 %>
+		<% else %>
+			<% updated_time = format_time(category[4]) %>
+		<% end %>
+		
+	<% cache(cache_key_for_category(category[0], updated_time)) do %>
       <tr>
         <td><%= link_to category[1], category_path(category[0]) %></td>
 		<td><%= category[2] %></td>
 		<td><%= category[3] %></td>
-		<% last_topic = category[5] %>
 		<% if last_topic == nil %>
-			<td>None</td>
 			<td>None</td>
 		<% else %>
 			<td><%= link_to category[6], category_topic_path(category[0], last_topic) %></td>
-			<td><%= link_to format_time(category[4]), get_post_path(Post.find(category[7])) %></td>
+		
+			<% if category[7] == nil %>
+				<td><%= link_to updated_time, category_topic_path(category[0], last_topic) %></td>
+			<% else %>
+				<td><%= link_to updated_time, get_post_path(Post.find(category[7])) %></td>
+			<% end %>
 		<% end %>
 		<% if has_admin_power? %>
 			<td><%= link_to 'Edit', edit_category_path(category[0]) %></td>
 			<td><%= link_to 'Destroy', category_path(category[0]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 		<% end %>
       </tr>
+	<% end %>
     <% end %>
   </tbody>
 </table>
