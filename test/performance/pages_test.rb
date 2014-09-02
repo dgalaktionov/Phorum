@@ -9,4 +9,8 @@ class PagesTest < ActionDispatch::PerformanceTest
   test "homepage" do
     get '/'
   end
+  
+  test "category" do
+    get '/categories/1'
+  end
 end

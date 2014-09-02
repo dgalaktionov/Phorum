@@ -91,4 +91,9 @@ module ApplicationHelper
   def phorum_transform(text)
     auto_link(phorum_sanitize(text).gsub(/(?<img>(https?:\/\/)?[-a-zA-Z0-9.]+\/[-_a-zA-Z0-9&.\/]+\.(?i)(bmp|jpg|jpeg|png|gif|tif|exf|svg|wfm))/, '<a href="\k<img>"><img alt="Phorum Image" src="\k<img>" class="phorum-image"></img></a>'))
   end
+  
+  # Format the time to a human-readable localized string
+  def format_time(time)
+    time.to_time.strftime("%d-%m-%Y %H:%M:%S")
+  end
 end

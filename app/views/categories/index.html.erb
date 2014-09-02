@@ -17,20 +17,20 @@
   <tbody>
     <% @categories.each do |category| %>
       <tr>
-        <td><%= link_to category.name, category %></td>
-		<td><%= category.topics.count %></td>
-		<td><%= count_posts(category) %></td>
-		<% last_topic = get_last_edited_category_topic(category) %>
+        <td><%= link_to category[1], category_path(category[0]) %></td>
+		<td><%= category[2] %></td>
+		<td><%= category[3] %></td>
+		<% last_topic = category[5] %>
 		<% if last_topic == nil %>
 			<td>None</td>
 			<td>None</td>
 		<% else %>
-			<td><%= link_to last_topic, [category, last_topic] %></td>
-			<td><%= link_to last_topic.updated_time, get_last_edited_post_path(last_topic) %></td>
+			<td><%= link_to category[6], category_topic_path(category[0], last_topic) %></td>
+			<td><%= link_to format_time(category[4]), get_post_path(Post.find(category[7])) %></td>
 		<% end %>
 		<% if has_admin_power? %>
-			<td><%= link_to 'Edit', edit_category_path(category) %></td>
-			<td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			<td><%= link_to 'Edit', edit_category_path(category[0]) %></td>
+			<td><%= link_to 'Destroy', category_path(category[0]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 		<% end %>
       </tr>
     <% end %>
