@@ -184,6 +184,7 @@
             <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">destroy</span>
+  <span class="ruby-ivar">@topic</span>.<span class="ruby-identifier">touch</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> [<span class="ruby-ivar">@category</span>, <span class="ruby-ivar">@topic</span>], <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Post was successfully destroyed.&#39;</span> }
     <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:no_content</span> }

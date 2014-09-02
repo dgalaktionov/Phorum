@@ -73,7 +73,11 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-c-stats_for_index">::stats_for_index</a>
+    
     <li ><a href="#method-i-to_s">#to_s</a>
+    
+    <li ><a href="#method-i-topic_stats_for_index">#topic_stats_for_index</a>
     
   </ul>
 </div>
@@ -103,6 +107,47 @@
     
 
     
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-stats_for_index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">stats_for_index</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>An optimized SQL query for the usual stuff</p>
+          
+          
+
+          
+          <div class="method-source-code" id="stats_for_index-source">
+            <pre><span class="ruby-comment"># File app/models/category.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">stats_for_index</span>
+  <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-string">&quot;SELECT c.id, c.name, count(distinct t.id), count(distinct p.id), max(t.updated_at), (SELECT id FROM topics WHERE category_id = c.id AND updated_at = max(t.updated_at) LIMIT 1), (SELECT name FROM topics WHERE updated_at = max(t.updated_at) LIMIT 1),  (SELECT id FROM posts WHERE topic_id = (SELECT id FROM topics WHERE updated_at = max(t.updated_at) LIMIT 1) ORDER BY updated_at DESC LIMIT 1) FROM (categories as c LEFT JOIN topics as t ON c.id = t.category_id) LEFT JOIN posts as p ON t.id = p.topic_id GROUP BY c.id&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
@@ -128,9 +173,42 @@
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File app/models/category.rb, line 5</span>
+            <pre><span class="ruby-comment"># File app/models/category.rb, line 6</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-topic_stats_for_index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">topic_stats_for_index</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Links to last topics, etc…</p>
+          
+          
+
+          
+          <div class="method-source-code" id="topic_stats_for_index-source">
+            <pre><span class="ruby-comment"># File app/models/category.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">topic_stats_for_index</span>
+  <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT t.id, t.category_id, t.name, count(distinct p.id), t.updated_at, (SELECT id FROM posts WHERE topic_id = t.id ORDER BY updated_at DESC LIMIT 1), (SELECT id FROM posts WHERE topic_id = t.id ORDER BY id DESC LIMIT 1) FROM topics AS t LEFT JOIN posts AS p ON t.id = p.topic_id GROUP BY t.id, t.category_id HAVING t.category_id = #{self.id} ORDER BY t.updated_at DESC&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
