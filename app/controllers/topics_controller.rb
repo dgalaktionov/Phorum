@@ -39,6 +39,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
+        @category.touch
         format.html { redirect_to [@category, @topic], notice: 'Topic was successfully created.' }
         format.json { render :show, status: :created, location: @topic }
       else
@@ -53,6 +54,7 @@ class TopicsController < ApplicationController
   def update
     respond_to do |format|
       if @topic.update(topic_params)
+        @category.touch
         format.html { redirect_to [@category, @topic], notice: 'Topic was successfully updated.' }
         format.json { render :show, status: :ok, location: @topic }
       else
@@ -67,6 +69,7 @@ class TopicsController < ApplicationController
   def destroy
     @topic.posts.each {|p| p.destroy}
     @topic.destroy
+    @category.touch
     respond_to do |format|
       format.html { redirect_to @category, notice: 'Topic was successfully destroyed.' }
       format.json { head :no_content }

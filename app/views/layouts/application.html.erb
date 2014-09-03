@@ -14,7 +14,7 @@
 <%= link_to "Index", root_path %>
 <%= link_to "Users", users_path %>
 <% if user_signed_in? %>
-	<span class="username">[<%= link_to current_user.name, edit_user_registration_path %>]</span>
+	<span class="username">[<%= link_to current_user.name, user_path(current_user) %>]</span>
 	<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 <% else %>
 	<%= link_to "Sign in", new_user_session_path %>

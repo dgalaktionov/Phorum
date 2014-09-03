@@ -25,6 +25,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         @topic.touch
+        @category.touch
         format.html { redirect_to get_post_path(@post) }
         format.json { render :show, status: :created, location: @post }
       else
@@ -40,6 +41,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update(post_params)
         @topic.touch
+        @category.touch
         format.html { redirect_to [@category, @topic], notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -54,6 +56,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     @topic.touch
+    @category.touch
     respond_to do |format|
       format.html { redirect_to [@category, @topic], notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }

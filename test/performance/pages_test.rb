@@ -15,10 +15,26 @@ class PagesTest < ActionDispatch::PerformanceTest
   end
   
   test "normal_topic" do
-    get "http://localhost:3000/categories/1/topics/12?page=1"
+    get "/categories/1/topics/12?page=1"
   end
   
   test "topic_with_images" do
-    get "http://localhost:3000/categories/1/topics/12?page=2"
+    get "/categories/1/topics/12?page=2"
+  end
+  
+  test "profile_page" do
+    get "/users/15"
+  end
+  
+  test "users_page" do
+    get "/users"
+  end
+  
+  test "user_topics" do
+    get "/users/6/topics"
+  end
+  
+  test "user_posts" do
+    get "/users/15/posts"
   end
 end

@@ -1,3 +1,4 @@
+<% cache(@user) do %>
 <h2><a href="#"><%= "#{@user.name}'s profile" %></a></h2>
 
 <div class="profile">
@@ -9,8 +10,14 @@
 	<div class="label">Registered</div><div class="field"><%= @user.created_time %></div>
 	<div class="label">Last seen</div><div class="field"><%= @user.last_login_time %></div>
 </div>
+<% end %>
 
 <% if has_admin_power? %>
-<br>
-<%= link_to "Edit this user", edit_user_path(@user) %>
+<div id="footer">
+	<%= link_to "Edit this user", edit_user_path(@user) %>
+</div>
+<% elsif current_user == @user %>
+<div id="footer">
+	<%= link_to "Edit my profile", edit_user_registration_path %>
+</div>
 <% end %>

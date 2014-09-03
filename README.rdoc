@@ -1,7 +1,9 @@
 = README
 
 == Brief description
-A simple phorum in rails, including basic user and permission management, categories and topics. This project is a work in progress that I started to learn Rails. For this reason I didn't follow any particular code style, usually making similar things in different ways.
+<b>Finished and closed project (at least for now)</b>
+
+A simple phorum in rails, including basic user and permission management, categories and topics. I started this project to learn Rails. For this reason I didn't follow any particular code style, usually making similar things in different ways.
 Also, I kept the CSS at a minimum and I don't plan to make this forum any "prettier". However, feel free to contribute in this or any other way :-)
 
 == Main features

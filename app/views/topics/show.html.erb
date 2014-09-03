@@ -1,3 +1,4 @@
+<% cache [@topic, current_user, params[:page]] do %>
 <h2><%= link_to @topic.category, category_path(@topic.category) %> >> <a href="#"><%= @topic %></a></h2>
 
 <table>
@@ -26,6 +27,7 @@
 	<tr><td><h3>Replies:</h3></td><td></td><td></td><td></td></tr>
 	
     <% @posts.each do |post| %>
+      <% cache [post, current_user] do %>	
       <tr id=<%= post.id %>>
 		<td><%= phorum_transform(post.message) %></td>
 		<td><%= post.user %></td>
@@ -35,12 +37,14 @@
         <td><%= link_to 'Destroy', [post.topic.category, post.topic, post], method: :delete, data: { confirm: 'Are you sure?' } %></td>
 		<% end %>
       </tr>
+	  <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 <%= will_paginate @posts %>
+<% end %>
 
 <% if user_signed_in? %>
 <br>

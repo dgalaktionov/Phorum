@@ -63,3 +63,8 @@
  .phorum-image {
 	max-width: 100%;
  }
+ 
+ #footer {
+	display: block;
+	clear: both;
+ }

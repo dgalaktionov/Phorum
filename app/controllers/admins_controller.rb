@@ -55,6 +55,7 @@ class AdminsController < ApplicationController
       elsif params[:commit] == "Delete account"
         if admin_params[:delete_stuff] == "1"
           for p in @user.posts
+           p.topic.touch
            p.destroy
           end
           
@@ -63,6 +64,7 @@ class AdminsController < ApplicationController
               p.destroy
             end
             
+            t.category.touch
             t.destroy
           end
           

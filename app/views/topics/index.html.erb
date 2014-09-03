@@ -1,3 +1,5 @@
+<% cache(cache_key_for_user_topics(@user, @topics, params[:page])) do %>
 <h2><a href="#"><%= "Topics from #{@user.name}" %></a></h2>
 
 <%= render partial: "layouts/topics_list" %>
+<% end %>

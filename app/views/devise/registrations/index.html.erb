@@ -1,3 +1,4 @@
+<% cache [@users.count, @users.maximum(:updated_at)] do %>
 <h2>Users</h2>
 
 <table id="userlist">
@@ -13,6 +14,7 @@
 
   <tbody>
     <% for user in @users %>
+	<% cache ["user_list", user] do %>
       <tr>
 		<td><%= user %></td>
 		<td><%= user.email %></td>
@@ -20,6 +22,8 @@
         <td><%= link_to user.topics.count, user_topics_path(user) %></td>
 		<td><%= link_to user.posts.count, user_posts_path(user) %></td>
       </tr>
+	<% end %>
     <% end %>
   </tbody>
 </table>
+<% end %>

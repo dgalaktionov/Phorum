@@ -17,7 +17,7 @@ devise_scope :user do
     end
     
     get "users" => "registrations#index"
-    get "users/:id" => "registrations#show"
+    get "users/:id" => "registrations#show", as: :user
 end
   
   get "users/:id/edit" => "admins#edit", as: :edit_user

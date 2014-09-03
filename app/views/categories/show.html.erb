@@ -1,6 +1,8 @@
+<% cache [@category, current_user, params[:page]] do %>
 <h2><a href="#"><%= @category %></a></h2>
 
 <%= render partial: "layouts/topics_list" %>
+<% end %>
 
 <% if user_signed_in? %>
 <br>

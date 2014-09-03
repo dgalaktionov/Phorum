@@ -29,7 +29,7 @@ cancel_user_registration GET    /users/cancel(.:format)                         
                          PATCH  /users(.:format)                                                   registrations#update
                          PUT    /users(.:format)                                                   registrations#update
                    users GET    /users(.:format)                                                   registrations#index
-                         GET    /users/:id(.:format)                                               registrations#show
+                    user GET    /users/:id(.:format)                                               registrations#show
                edit_user GET    /users/:id/edit(.:format)                                          admins#edit
              update_user PUT    /users/:id(.:format)                                               admins#update
              user_topics GET    /users/:id/topics(.:format)                                        topics#index

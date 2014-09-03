@@ -29,9 +29,12 @@
 				<td><%= link_to "by #{last_post.user.name}", get_post_path(last_post) %></td>
 			<% end %>
 		<% end %>
+		
+		<% cache(cache_key_for_show_user(topic, current_user)) do %>
 		<% if has_power_over?(topic) %>
         <td><%= link_to 'Edit', edit_category_topic_path(category_id: topic.category , id: topic.id) %></td>
         <td><%= link_to 'Destroy', category_topic_path(category_id: topic.category, id: topic.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<% end %>
 		<% end %>
       </tr>
     <% end %>
