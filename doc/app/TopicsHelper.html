@@ -60,7 +60,17 @@
     
     
     
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-cache_key_for_user_topics">#cache_key_for_user_topics</a>
+    
+  </ul>
+</div>
+
   </div>
 </nav>
 
@@ -86,6 +96,51 @@
     
 
     
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-cache_key_for_user_topics" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">cache_key_for_user_topics</span><span
+            class="method-args">(user, topics, page)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Generate a cache key for the topics of a user</p>
+          
+          
+
+          
+          <div class="method-source-code" id="cache_key_for_user_topics-source">
+            <pre><span class="ruby-comment"># File app/helpers/topics_helper.rb, line 3</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cache_key_for_user_topics</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">topics</span>, <span class="ruby-identifier">page</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">current_user</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-node">&quot;user/#{user.id}-#{user.updated_at}/topics/#{page}-#{topics.maximum(:updated_at)}/GUEST&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-node">&quot;user/#{user.id}-#{user.updated_at}/topics/#{page}-#{topics.maximum(:updated_at)}/#{current_user.id}-#{current_user.updated_at}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
   </section>
 </main>
 
