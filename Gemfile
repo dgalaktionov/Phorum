@@ -51,5 +51,5 @@ gem 'will_paginate', '~> 3.0'
 gem 'rails-perftest'
 gem 'ruby-prof'
 
-# PosgtreSQL for production
+# PosgtreSQL for Heroku ¬_¬
 gem 'pg'
