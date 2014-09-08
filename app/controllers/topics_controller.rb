@@ -11,13 +11,13 @@ class TopicsController < ApplicationController
   # Show all topics from a user
   def index
     @user = User.find(params[:id])
-    @topics = @user.topics.all.paginate(:page => params[:page], :per_page => 20)
+    @topics = @user.topics.all.order(updated_at: :desc).paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /topics/1
   # GET /topics/1.json
   def show
-    @posts = @topic.posts.paginate(:page => params[:page], :per_page => 20)
+    @posts = @topic.posts.order(id: :asc).paginate(:page => params[:page], :per_page => 20)
     @post = Post.new
   end
 

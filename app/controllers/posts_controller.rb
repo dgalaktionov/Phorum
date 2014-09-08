@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   
   def index
     @user = User.find(params[:id])
-    @posts = @user.posts.all.reverse_order.paginate(:page => params[:page], :per_page => 20)
+    @posts = @user.posts.all.order(updated_at: :desc).paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /posts/1/edit

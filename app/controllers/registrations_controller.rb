@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
 def index
-    @users = User.all
+    @users = User.all.order(:id)
 end
 
 def show
