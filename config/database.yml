@@ -26,4 +26,4 @@ test:
 
 production:
   <<: *default
-  database: phorum_production
+  database: phorum
