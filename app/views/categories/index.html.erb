@@ -1,15 +1,15 @@
 <h2>Forum index</h2>
 
-<table>
+<table id="index">
   <thead>
     <tr>
-	<th>Name</th>
-	<th>Topics</th>
-	<th>Posts</th>
-	<th>Last Topic</th>
-	<th>Updated</th>
+	<th class="category_name">Name</th>
+	<th class="category_topics">Topics</th>
+	<th class="category_posts">Posts</th>
+	<th class="category_lasttopic">Last Topic</th>
+	<th class="category_updated">Updated</th>
 	<% if has_admin_power? %>
-      <th colspan="2"></th>
+      <th class="category_admin_options" colspan="2"></th>
 	<% end %>
     </tr>
   </thead>
@@ -25,25 +25,25 @@
 		
 	<% cache(cache_key_for_index(category.id, updated_time)) do %>
       <tr>
-        <td><%= link_to category.name, category %></td>
-		<td><%= category.topics.count %></td>
-		<td><%= category.posts.count %></td>
+        <td class="category_name"><%= link_to category.name, category %></td>
+		<td class="category_topics"><%= category.topics.count %></td>
+		<td class="category_posts"><%= category.posts.count %></td>
 		<% if last_topic == nil %>
-			<td>None</td>
-			<td>None</td>
+			<td class="category_lasttopic">None</td>
+			<td class="category_updated">None</td>
 		<% else %>
-			<td><%= link_to last_topic.name, [category, last_topic] %></td>
+			<td class="category_lasttopic"><%= link_to last_topic.name, [category, last_topic] %></td>
 		
 			<% if last_topic.posts.empty? %>
-				<td><%= link_to updated_time, [category, last_topic] %></td>
+				<td class="category_updated><%= link_to updated_time, [category, last_topic] %></td>
 			<% else %>
-				<td><%= link_to updated_time, get_post_path(last_topic.posts.order(updated_at: :desc).first) %></td>
+				<td class="category_updated><%= link_to updated_time, get_post_path(last_topic.posts.order(updated_at: :desc).first) %></td>
 			<% end %>
 		<% end %>
 	<% end %>
 		<% if has_admin_power? %>
-			<td><%= link_to 'Edit', category %></td>
-			<td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			<td class="category_admin_options"><%= link_to 'Edit', category %></td>
+			<td class="category_admin_options"><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 		<% end %>
       </tr>
     <% end %>
