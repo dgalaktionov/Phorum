@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
   has_many :topics
-  #has_many :posts, through: :topics
+  has_many :posts, through: :topics
   validates :name, presence: true
   
   def to_s
