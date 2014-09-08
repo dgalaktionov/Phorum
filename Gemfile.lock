@@ -62,6 +62,7 @@ GEM
     multi_json (1.10.1)
     mysql2 (0.3.16)
     orm_adapter (0.5.0)
+    pg (0.17.1-x64-mingw32)
     polyglot (0.3.5)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -134,6 +135,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
+  pg
   rails (= 4.1.4)
   rails-perftest
   rails_autolink

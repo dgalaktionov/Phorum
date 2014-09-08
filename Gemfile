@@ -50,3 +50,6 @@ gem 'will_paginate', '~> 3.0'
 # Profiling
 gem 'rails-perftest'
 gem 'ruby-prof'
+
+# PosgtreSQL for production
+gem 'pg'
