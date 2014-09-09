@@ -2,6 +2,7 @@ class Post < ActiveRecord::Base
   belongs_to :topic
   belongs_to :user
   validates :message, :user_id, :topic_id, presence: true
+  validates :message, length: { maximum: 5000 }
   
   def to_s
     message

@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_presence_of :email
   validates_uniqueness_of :email
+  validates :email, length: { maximum: 100 }
+  validates :name, length: { maximum: 40 }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

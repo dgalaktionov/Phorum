@@ -1,7 +1,7 @@
 class Category < ActiveRecord::Base
   has_many :topics
   has_many :posts, through: :topics
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 50 }
   
   def to_s
     name
