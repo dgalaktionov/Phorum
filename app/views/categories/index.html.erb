@@ -33,12 +33,7 @@
 			<td class="category_updated">None</td>
 		<% else %>
 			<td class="category_lasttopic"><%= link_to last_topic.name, [category, last_topic] %></td>
-		
-			<% if last_topic.posts.empty? %>
-				<td class="category_updated><%= link_to updated_time, [category, last_topic] %></td>
-			<% else %>
-				<td class="category_updated><%= link_to updated_time, get_post_path(last_topic.posts.order(updated_at: :desc).first) %></td>
-			<% end %>
+			<td class="category_updated"><%= link_to updated_time, get_last_edited_post_path(last_topic) %></td>
 		<% end %>
 	<% end %>
 		<% if has_admin_power? %>
